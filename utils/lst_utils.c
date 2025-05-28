@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 16:28:15 by edurance          #+#    #+#             */
-/*   Updated: 2025/05/28 19:26:59 by edurance         ###   ########.fr       */
+/*   Updated: 2025/05/28 19:54:55 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void	ft_lstrev_rotate(t_list **stack)
 	tmp = last;
 	last = last->previous;
 	last->next = NULL;
-	tmp->next = NULL;
+	tmp->previous = NULL;
 	ft_lstadd_front(stack, tmp);
 }

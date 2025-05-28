@@ -6,11 +6,16 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 11:46:46 by edurance          #+#    #+#             */
-/*   Updated: 2025/05/28 19:35:30 by edurance         ###   ########.fr       */
+/*   Updated: 2025/05/28 19:56:33 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	printlist(void *content)
+{
+	printf("%d\n", *(int *)content);
+}
 
 int	main(int ac, char **av)
 {
@@ -25,4 +30,5 @@ int	main(int ac, char **av)
 	if (!check_int(av) || !check_dupli(ac, av))
 		return (write(2, "Error\n", 6));
 	create_list(&a, ac, av);
+	return (0);
 }
