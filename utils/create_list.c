@@ -1,42 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_nbr.c                                      :+:      :+:    :+:   */
+/*   create_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 11:53:39 by edurance          #+#    #+#             */
-/*   Updated: 2025/05/28 13:25:00 by edurance         ###   ########.fr       */
+/*   Updated: 2025/05/28 17:29:01 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	convert_nbr(int ac, char **av, int **stack_a, int **stack_b)
+void	create_list(t_list **stack_a, int ac, char **av)
 {
 	int		i;
-	long	res;
+	t_list	*new;
+	int		*temp;
 
-	i = 0;
-	*stack_a = malloc(sizeof(int) * ac);
-	*stack_b = malloc(sizeof(int) * ac);
-	if (!*stack_a || !*stack_b)
+	i = 1;
+	while (i <= ac)
 	{
-		free(stack_a);
-		free(stack_b);
-		return (0);
-	}
-	while (i < ac)
-	{
-		res = ft_atoi(av[i + 1]);
-		if (res < INT_MIN || res > INT_MAX)
+		temp = malloc(sizeof(int));
+		if (!temp)
 		{
-			free(stack_a);
-			free(stack_b);
-			return (0);
+			ft_lstclear(stack_a, &free);
+			return ;
 		}
-		(*stack_a)[i] = (int)res;
+		*temp = (int)ft_atoi(av[i]);
+		new = ft_lstnew(temp);
+		ft_lstadd_back(stack_a, new);
 		i++;
 	}
-	return (1);
 }

@@ -6,22 +6,31 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 11:46:46 by edurance          #+#    #+#             */
-/*   Updated: 2025/05/28 13:30:30 by edurance         ###   ########.fr       */
+/*   Updated: 2025/05/28 17:52:57 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	printcontent(void *content)
+{
+	printf("%d\n", *(int *)content);
+}
+
 int	main(int ac, char **av)
 {
-	int	*a;
-	int	*b;
+	t_list	*a;
+	t_list	*b;
 
 	ac = ac - 1;
+	a = NULL;
+	b = NULL;
 	if (!ac)
 		return (0);
-	if (!check_int(av) || !check_dupli(ac, av) || !convert_nbr(ac, av, &a, &b))
+	if (!check_int(av) || !check_dupli(ac, av))
 		return (write(2, "Error\n", 6));
-	free(a);
-	free(b);
+	create_list(&a, ac, av);
+	ft_sa(&a);
+	ft_lstiter(a, &printcontent);
+	ft_lstclear(&a, &free);
 }

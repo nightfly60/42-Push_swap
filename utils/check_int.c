@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 12:40:28 by edurance          #+#    #+#             */
-/*   Updated: 2025/05/28 13:54:41 by edurance         ###   ########.fr       */
+/*   Updated: 2025/05/28 16:40:02 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,16 @@ static int	check_digits(char *av)
 
 int	check_int(char **av)
 {
-	int	i;
+	int		i;
+	long	nbr;
 
 	i = 1;
 	while (av[i])
 	{
 		if (ft_strlen(av[i]) > 11 || !check_digits(av[i]))
+			return (0);
+		nbr = ft_atoi(av[i]);
+		if (nbr < INT_MIN || nbr > INT_MAX)
 			return (0);
 		i++;
 	}

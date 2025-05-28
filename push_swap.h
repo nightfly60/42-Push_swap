@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 12:12:54 by edurance          #+#    #+#             */
-/*   Updated: 2025/05/28 13:13:57 by edurance         ###   ########.fr       */
+/*   Updated: 2025/05/28 18:18:11 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,18 @@
 # include "libft/libft.h"
 
 /*utils*/
-int	convert_nbr(int ac, char **av, int **stack_a, int **stack_b);
-int	check_int(char **av);
-int	check_dupli(int ac, char **av);
+int		check_int(char **av);
+int		check_dupli(int ac, char **av);
+
+/*lists*/
+void	create_list(t_list **stack_a, int ac, char **av);
+void	ft_lstswap(t_list **stack);
+
+/*operations*/
+void	ft_sa(t_list **stack_a);
+void	ft_sb(t_list **stack_b);
+void	ft_ss(t_list **stack_a, t_list **stack_b);
+void	ft_pa(t_list **stack_a, t_list **stack_b);
+void	ft_pb(t_list **stack_a, t_list **stack_b);
 
 #endif

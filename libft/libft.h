@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 13:53:30 by edurance          #+#    #+#             */
-/*   Updated: 2025/05/28 12:58:45 by edurance         ###   ########.fr       */
+/*   Updated: 2025/05/28 14:46:47 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
+	struct s_list	*previous;
 }					t_list;
 
 t_list				*ft_lstnew(void *pomme);

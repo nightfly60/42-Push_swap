@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 11:46:41 by edurance          #+#    #+#             */
-/*   Updated: 2025/05/28 18:09:00 by edurance         ###   ########.fr       */
+/*   Created: 2025/05/28 14:08:30 by edurance          #+#    #+#             */
+/*   Updated: 2025/05/28 18:17:53 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-/*Swap the first 2 elements at the top of stack a*/
-void	ft_sa(t_list **stack_a)
+/*Take the first element at the top of b and put it at the top of a*/
+void	ft_pa(t_list **stack_a, t_list **stack_b)
 {
-	ft_lstswap(stack_a);
+	if (!stack_b)
+		return ;
+	ft_lstadd_front(stack_a, stack_b);
 }
 
-/*Swap the first 2 elements at the top of stack b*/
-void	ft_sb(t_list **stack_b)
+/*Take the first element at the top of a and put it at the top of b*/
+void	ft_pb(t_list **stack_a, t_list **stack_b)
 {
-	ft_lstswap(stack_b);
-}
-
-/*sa and sb at the same time*/
-void	ft_ss(t_list **stack_a, t_list **stack_b)
-{
-	ft_lstswap(stack_a);
-	ft_lstswap(stack_b);
+	if (!stack_a)
+		return ;
+	ft_lstadd_front(stack_b, stack_a);
 }

@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   lst_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 11:46:41 by edurance          #+#    #+#             */
-/*   Updated: 2025/05/28 18:09:00 by edurance         ###   ########.fr       */
+/*   Created: 2025/05/28 16:28:15 by edurance          #+#    #+#             */
+/*   Updated: 2025/05/28 17:54:30 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-/*Swap the first 2 elements at the top of stack a*/
-void	ft_sa(t_list **stack_a)
+void	ft_lstswap(t_list **stack)
 {
-	ft_lstswap(stack_a);
-}
+	t_list *temp;
 
-/*Swap the first 2 elements at the top of stack b*/
-void	ft_sb(t_list **stack_b)
-{
-	ft_lstswap(stack_b);
-}
-
-/*sa and sb at the same time*/
-void	ft_ss(t_list **stack_a, t_list **stack_b)
-{
-	ft_lstswap(stack_a);
-	ft_lstswap(stack_b);
+	if (!*stack || !(*stack)->next)
+		return ;
+	temp = (*stack)->next;
+	(*stack)->previous = temp;
+	(*stack)->next = temp->next;
+	temp->next = *stack;
+	temp->previous = NULL;
+	*stack = temp;
 }
