@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 11:46:46 by edurance          #+#    #+#             */
-/*   Updated: 2025/05/30 12:11:16 by edurance         ###   ########.fr       */
+/*   Updated: 2025/05/30 17:01:54 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,39 +26,39 @@
 // 	int		operations;
 // 	int		count;
 // 	int		k;
+// 	int		chunks;
 
 // 	ac = ac - 1;
 // 	a = NULL;
 // 	b = NULL;
+// 	chunks = 5;
 // 	operations = 0;
 // 	if (!ac)
 // 		return (0);
 // 	if (!check_int(av) || !check_dupli(ac, av))
 // 		return (write(2, "Error\n", 6));
 // 	create_list(&a, ac, av);
-// 	while (a)
+// 	k = 0;
+// 	while (chunks < ft_lstsize(a))
 // 	{
-// 		k = 0;
-// 		count = ft_lstmin(&a);
-// 		if (count > ft_lstsize(a) / 2)
+// 		while (k < chunks)
 // 		{
-// 			count = ft_lstsize(a) - count;
-// 			while (k < count)
-// 			{
-// 				ft_rra(&a);
-// 				operations++;
-// 				k++;
-// 			}
+// 			ft_pb(&a, &b);
+// 			k++;
+// 			chunks += chunks;
+// 			operations++;
 // 		}
-// 		else
-// 			while (k < count)
+// 		k = 0;
+// 		while (b)
+// 		{
+// 			while (ft_lstmax(b))
 // 			{
-// 				ft_ra(&a);
+// 				ft_rb(&b);
 // 				operations++;
-// 				k++;
 // 			}
-// 		ft_pb(&a, &b);
-// 		operations++;
+// 			ft_pa(a, b);
+// 			operations++;
+// 		}
 // 	}
 // 	ft_lstiter(b, &printlist);
 // 	printf("LE COMPTEUR MESDAMES ET MESSIEURS = %d", operations);

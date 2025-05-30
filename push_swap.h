@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 12:12:54 by edurance          #+#    #+#             */
-/*   Updated: 2025/05/30 12:59:01 by edurance         ###   ########.fr       */
+/*   Updated: 2025/05/30 17:30:54 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@ void	ft_lstrotate(t_list **stack);
 void	ft_lstrev_rotate(t_list **stack);
 int	ft_lstsorted(t_list *stack, int prem);
 int	ft_lstmin(t_list **stack);
+int	ft_lstmax(t_list **stack);
+
+/*struct*/
+typedef struct s_data
+{
+	int	value;
+	int	rank;
+}		t_data;
 
 /*operations*/
 void	ft_sa(t_list **stack_a);
