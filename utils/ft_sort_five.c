@@ -1,42 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   normalize.c                                        :+:      :+:    :+:   */
+/*   ft_sort_five.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/30 16:49:26 by edurance          #+#    #+#             */
-/*   Updated: 2025/05/31 10:51:21 by edurance         ###   ########.fr       */
+/*   Created: 2025/05/31 12:42:26 by edurance          #+#    #+#             */
+/*   Updated: 2025/05/31 15:53:55 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_list	*ft_lstget(t_list *stack, int place)
+void	ft_push_five(t_list **stack_a, t_list **stack_b, int maxrank,
+		int minrank)
 {
+	int	rank;
+	int	count;
+	int	size;
 	int	i;
 
+	size = ft_lstsize(*stack_a);
 	i = 0;
-	while (stack && i < place)
+	count = 0;
+	while (count < 5 && i < size)
 	{
-		stack = stack->next;
+		rank = ((t_data *)(*stack_a)->content)->rank;
+		if (rank <= maxrank && rank > minrank)
+		{
+			ft_pb(stack_a, stack_b);
+			count++;
+		}
+		else
+			ft_ra(stack_a);
 		i++;
-	}
-	return (stack);
-}
-
-void	ft_normalize(t_list **stack)
-{
-	int		num;
-	int		size;
-	t_list	*first;
-
-	size = ft_lstsize(*stack);
-	num = 0;
-	while (num < size)
-	{
-		first = ft_lstget(*stack, ft_lstmin(stack));
-		((t_data *)first->content)->rank = num;
-		num++;
 	}
 }

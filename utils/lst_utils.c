@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 16:28:15 by edurance          #+#    #+#             */
-/*   Updated: 2025/05/30 18:40:01 by edurance         ###   ########.fr       */
+/*   Updated: 2025/05/31 15:48:34 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,17 @@ void	ft_lstrev_rotate(t_list **stack)
 int	ft_lstsorted(t_list *stack, int prem)
 {
 	t_list	*n;
-	t_data	*next_content;
-	t_data	*content;
 	int		first;
+	int		content;
+	int		next_content;
 
-	first = *(int *)stack->content;
+	first = ((t_data *)stack->content)->value;
 	while (stack->next)
 	{
 		n = stack->next;
-		next_content = n->content;
-		if (n && next_content->value < content->value)
+		next_content = ((t_data *)n->content)->value;
+		content = ((t_data *)stack->content)->value;
+		if (n && next_content < content)
 		{
 			if (prem && ft_lstsorted(n, 0)
 				&& ((t_data *)ft_lstlast(n)->content)->value < first)
@@ -133,74 +134,36 @@ int	ft_lstmax(t_list **stack)
 	return (count);
 }
 
-// void	printlist(void *content)
-// {
-// 	printf("%d\n", *(int *)content);
-// }
+void	printlist(void *content)
+{
+	printf("%d\n", *(int *)content);
+}
 
-// int	main(int ac, char **av)
-// {
-// 	t_list	*a;
-// 	t_list	*b;
-// 	t_list	*btemp;
-// 	int		temp;
-// 	int		operations;
-// 	int		count;
-// 	int		k;
+int	main(int ac, char **av)
+{
+	t_list	*a;
+	t_list	*b;
+	t_list	*btemp;
+	int		temp;
+	int		operations;
+	int		count;
+	int		k;
 
-// 	ac = ac - 1;
-// 	a = NULL;
-// 	b = NULL;
-// 	operations = 0;
-// 	if (!ac)
-// 		return (0);
-// 	if (!check_int(av) || !check_dupli(ac, av))
-// 		return (write(2, "Error\n", 6));
-// 	create_list(&a, ac, av);
-// 	while (a)
-// 	{
-// 		if (ft_lstsorted(a, 1))
-// 			break ;
-// 		if (ft_lstmin(&a) > ft_lstsize(a) / 2)
-// 		{
-// 			while (ft_lstmin(&a))
-// 			{
-// 				ft_ra(&a);
-// 				operations++;
-// 			}
-// 		}
-// 		else
-// 		{
-// 			while(ft_lstmin(&a))
-// 			{
-// 				ft_rra(&a);
-// 				operations++;
-// 			}
-// 		}
-// 		ft_pb(&a, &b);
-// 		operations++;
-// 	}
-// 	while (ft_lstmin(&a) > ft_lstsize(a) / 2)
-// 	{
-// 		ft_rra(&a);
-// 		operations++;
-// 	}
-// 	while (ft_lstmin(&a))
-// 	{
-// 		ft_ra(&a);
-// 		operations++;
-// 	}
-// 	while (b)
-// 	{
-// 		ft_pa(&a, &b);
-// 		operations++;
-// 	}
-// 	printf("LIST A\n");
-// 	ft_lstiter(a, &printlist);
-// 	printf("LIST B\n");
-// 	ft_lstiter(b, &printlist);
-// 	printf("COMPTEUR : %d\n", operations);
-// 	ft_lstclear(&a, &free);
-// 	ft_lstclear(&b, &free);
-// 	return (0);
-// }
+	ac = ac - 1;
+	a = NULL;
+	b = NULL;
+	operations = 0;
+	if (!ac)
+		return (0);
+	if (!check_int(av) || !check_dupli(ac, av))
+		return (write(2, "Error\n", 6));
+	create_list(&a, ac, av);
+	ft_normalize(&a);
+	ft_push_five(&a, &b, 5, 0);
+	printf("LIST B\n");
+	ft_lstiter(b, &printlist);
+	printf("COMPTEUR : %d\n", operations);
+	ft_lstclear(&a, &free);
+	ft_lstclear(&b, &free);
+	return (0);
+}
