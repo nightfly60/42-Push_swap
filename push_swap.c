@@ -6,16 +6,16 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 11:46:46 by edurance          #+#    #+#             */
-/*   Updated: 2025/05/30 17:01:54 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/01 16:46:18 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// void	printlist(void *content)
-// {
-// 	printf("%d\n", *(int *)content);
-// }
+void	printlist(void *content)
+{
+	printf("%d\n", *(int *)content);
+}
 
 // int	main(int ac, char **av)
 // {

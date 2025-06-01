@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 16:28:15 by edurance          #+#    #+#             */
-/*   Updated: 2025/05/31 15:48:34 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/01 17:11:09 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,57 +86,12 @@ int	ft_lstsorted(t_list *stack, int prem)
 	return (1);
 }
 
-int	ft_lstmin(t_list **stack)
+static void	printlist(void *content)
 {
-	int		min;
-	int		min_index;
-	int		index;
-	t_list	*temp_stack;
+	t_data	*data;
 
-	temp_stack = *stack;
-	index = 0;
-	min_index = -1;
-	min = 0;
-	while (temp_stack)
-	{
-		if (((t_data *)temp_stack->content)->rank == -1)
-		{
-			if (min_index == -1 || ((t_data *)temp_stack->content)->value < min)
-			{
-				min = ((t_data *)temp_stack->content)->value;
-				min_index = index;
-			}
-		}
-		temp_stack = temp_stack->next;
-		index++;
-	}
-	return (min_index);
-}
-
-int	ft_lstmax(t_list **stack)
-{
-	int		max;
-	int		count;
-	t_list	*temp_stack;
-
-	temp_stack = *stack;
-	max = ((t_data *)temp_stack->content)->value;
-	count = 0;
-	while (temp_stack)
-	{
-		temp_stack = temp_stack->next;
-		if (temp_stack && max < ((t_data *)temp_stack->content)->value)
-		{
-			max = ((t_data *)temp_stack->content)->value;
-			count++;
-		}
-	}
-	return (count);
-}
-
-void	printlist(void *content)
-{
-	printf("%d\n", *(int *)content);
+	data = ((t_data *)content);
+	printf("valeur : %d | rank : %d\n", data->value, data->rank);
 }
 
 int	main(int ac, char **av)
@@ -159,10 +114,11 @@ int	main(int ac, char **av)
 		return (write(2, "Error\n", 6));
 	create_list(&a, ac, av);
 	ft_normalize(&a);
+	printf("LIST A\n");
+	ft_lstiter(a, &printlist);
 	ft_push_five(&a, &b, 5, 0);
 	printf("LIST B\n");
 	ft_lstiter(b, &printlist);
-	printf("COMPTEUR : %d\n", operations);
 	ft_lstclear(&a, &free);
 	ft_lstclear(&b, &free);
 	return (0);
