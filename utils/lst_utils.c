@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 16:28:15 by edurance          #+#    #+#             */
-/*   Updated: 2025/06/01 17:11:09 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/04 18:10:35 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,30 @@ static void	printlist(void *content)
 	data = ((t_data *)content);
 	printf("valeur : %d | rank : %d\n", data->value, data->rank);
 }
+static int	ft_lstmax(t_list **stack)
+{
+	int		max;
+	int		i;
+	t_list	*temp_stack;
+	int		res;
+
+	res = 1;
+	temp_stack = *stack;
+	i = 0;
+	if (temp_stack)
+		max = ((t_data *)temp_stack->content)->rank;
+	while (temp_stack)
+	{
+		i++;
+		temp_stack = temp_stack->next;
+		if (temp_stack && max < ((t_data *)temp_stack->content)->rank)
+		{
+			max = ((t_data *)temp_stack->content)->rank;
+			res = i;
+		}
+	}
+	return (res);
+}
 
 int	main(int ac, char **av)
 {
@@ -100,23 +124,43 @@ int	main(int ac, char **av)
 	t_list	*b;
 	t_list	*btemp;
 	int		temp;
-	int		operations;
 	int		count;
 	int		k;
+	int		x;
+	int		i;
+	int		*res;
 
 	ac = ac - 1;
 	a = NULL;
 	b = NULL;
-	operations = 0;
 	if (!ac)
 		return (0);
 	if (!check_int(av) || !check_dupli(ac, av))
 		return (write(2, "Error\n", 6));
 	create_list(&a, ac, av);
 	ft_normalize(&a);
+	ft_pb(&a, &b);
+	ft_pb(&a, &b);
+	ft_pb(&a, &b);
+	ft_pb(&a, &b);
 	printf("LIST A\n");
 	ft_lstiter(a, &printlist);
-	ft_push_five(&a, &b, 5, 0);
+	x = 0;
+	i = 0;
+	while (x < ft_lstsize(a))
+	{
+		res = operations(a, b, x, ((t_data *)ft_lstget(a, x)->content)->rank);
+		i = 0;
+		while (i <= 3)
+		{
+			printf("%d | ", res[i]);
+			i++;
+		}
+		printf("TOTAL : %d", sum_operations(res));
+		printf("\n");
+		x++;
+		free(res);
+	}
 	printf("LIST B\n");
 	ft_lstiter(b, &printlist);
 	ft_lstclear(&a, &free);
