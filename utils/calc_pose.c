@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 11:50:56 by edurance          #+#    #+#             */
-/*   Updated: 2025/06/04 18:17:54 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/05 13:19:36 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,20 @@ int	b_rotations(t_list **b, int rank)
 	return (0);
 }
 
+int	ft_min(int a, int b)
+{
+	if (a > b)
+		return (b);
+	return (a);
+}
+
+int	ft_max(int a, int b)
+{
+	if (a > b)
+		return (a);
+	return (b);
+}
+
 int	*operations(t_list *a, t_list *b, int x, int rank)
 {
 	int	*res;
@@ -109,29 +123,60 @@ int	*operations(t_list *a, t_list *b, int x, int rank)
 	return (res);
 }
 
-int sum_operations(int *res)
+int	total_operations(int *tab)
 {
-	int total;
-	int b_rotate;
-	int a_rotate;
+	int	min;
 
-	total = 0;
-	if (res[0] > res[1])
-		a_rotate = res[1];
-	else
-		a_rotate = res[0];
-	if (res[2] > res[3])
-		b_rotate = res[3];
-	else
-		b_rotate = res[2];
-	if ((b_rotate == res[2] && a_rotate == res[0]) || (b_rotate == res[3] && a_rotate == res[1]))
+	min = ft_min(tab[0], tab[1]) + ft_min(tab[2], tab[3]);
+	if (min > ft_max(tab[0], tab[2]))
+		min = ft_max(tab[0], tab[2]);
+	if (min > ft_max(tab[1], tab[3]))
+		min = ft_max(tab[1], tab[3]);
+	if (min == ft_min(tab[0], tab[1]) + ft_min(tab[2], tab[3]))
 	{
-		if (b_rotate > a_rotate)
-			total = b_rotate;
+		if (tab[0] == ft_max(tab[0], tab[1]))
+			tab[0] = 0;
 		else
-			total = a_rotate;
+			tab[1] = 0;
 	}
-	else
-		total = b_rotate + a_rotate;
-	return (total);
+	else if (min == ft_max(tab[0], tab[2]))
+	{
+		tab[1] = 0;
+		tab[3] = 0;
+	}
+	else if (min == ft_max(tab[1], tab[3]))
+	{
+		tab[0] = 0;
+		tab[2] = 0;
+	}
+	return (min);
+}
+
+void	apply_ope(int *tab, t_list **a, t_list **b)
+{
+	int	i;
+
+	i = 0;
+	while (tab[0] && tab[2])
+	{
+		ft_rr(a, b);
+		tab[0]--;
+		tab[2]--;
+	}
+	while (i < 4)
+	{
+		while (tab[i])
+		{
+			if (i == 0)
+				ft_ra(a);
+			else if (i == 1)
+				ft_rra(a);
+			else if (i == 2)
+				ft_rb(b);
+			else if (i == 3)
+				ft_rrb(b);
+			tab[i]--;
+		}
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 16:28:15 by edurance          #+#    #+#             */
-/*   Updated: 2025/06/04 18:10:35 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/05 13:14:01 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ int	main(int ac, char **av)
 	int		x;
 	int		i;
 	int		*res;
+	int		min;
 
 	ac = ac - 1;
 	a = NULL;
@@ -145,22 +146,30 @@ int	main(int ac, char **av)
 	ft_pb(&a, &b);
 	printf("LIST A\n");
 	ft_lstiter(a, &printlist);
+	printf("LIST B\n");
+	ft_lstiter(b, &printlist);
+	printf("----------------------\n");
 	x = 0;
 	i = 0;
+	int smaller = 0;
+	res = operations(a, b, x, ((t_data *)ft_lstget(a, x)->content)->rank);
+	min = total_operations(res);
 	while (x < ft_lstsize(a))
 	{
 		res = operations(a, b, x, ((t_data *)ft_lstget(a, x)->content)->rank);
-		i = 0;
-		while (i <= 3)
+		if (min > total_operations(res))
 		{
-			printf("%d | ", res[i]);
-			i++;
+			min = total_operations(res);
+			smaller = x;
 		}
-		printf("TOTAL : %d", sum_operations(res));
-		printf("\n");
 		x++;
 		free(res);
 	}
+	res = operations(a, b, smaller, ((t_data *)ft_lstget(a, smaller)->content)->rank);
+	total_operations(res);
+	apply_ope(res, &a, &b);
+	printf("LIST A\n");
+	ft_lstiter(a, &printlist);
 	printf("LIST B\n");
 	ft_lstiter(b, &printlist);
 	ft_lstclear(&a, &free);

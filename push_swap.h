@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 12:12:54 by edurance          #+#    #+#             */
-/*   Updated: 2025/06/04 17:39:25 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/05 13:12:26 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int		check_dupli(int ac, char **av);
 void	ft_normalize(t_list **stack);
 int		b_rotations(t_list **b, int rank);
 int		*operations(t_list *a, t_list *b, int x, int rank);
-int		sum_operations(int *res);
+int		total_operations(int *tab);
+int		ft_min(int a, int b);
+int		ft_max(int a, int b);
+void	apply_ope(int *tab, t_list **a, t_list **b);
 
 /*lists*/
 void	create_list(t_list **stack_a, int ac, char **av);
