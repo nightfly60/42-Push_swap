@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_dupli.c                                      :+:      :+:    :+:   */
+/*   extremum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 12:49:09 by edurance          #+#    #+#             */
-/*   Updated: 2025/05/29 16:54:01 by edurance         ###   ########.fr       */
+/*   Created: 2025/06/06 12:49:50 by edurance          #+#    #+#             */
+/*   Updated: 2025/06/06 12:49:56 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
-int	check_dupli(int ac, char **av)
+int	ft_min(int a, int b)
 {
-	int	i;
-	int	j;
+	if (a > b)
+		return (b);
+	return (a);
+}
 
-	i = 1;
-	while (i <= ac)
-	{
-		j = 1;
-		while (j <= ac)
-		{
-			if (!ft_strcmp(av[i], av[j]) && j != i)
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
+int	ft_max(int a, int b)
+{
+	if (a > b)
+		return (a);
+	return (b);
 }

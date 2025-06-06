@@ -6,24 +6,11 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:49:26 by edurance          #+#    #+#             */
-/*   Updated: 2025/06/04 15:35:42 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/06 13:02:58 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
-
-t_list	*ft_lstget(t_list *stack, int place)
-{
-	int	i;
-
-	i = 0;
-	while (stack && i < place)
-	{
-		stack = stack->next;
-		i++;
-	}
-	return (stack);
-}
+#include "../../push_swap.h"
 
 static int	ft_lstmin(t_list **stack)
 {
@@ -52,6 +39,7 @@ static int	ft_lstmin(t_list **stack)
 	return (min_index);
 }
 
+/*(ranks)*/
 void	ft_normalize(t_list **stack)
 {
 	int		num;

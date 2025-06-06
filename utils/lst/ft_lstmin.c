@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_list.c                                      :+:      :+:    :+:   */
+/*   ft_lstmin.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 11:53:39 by edurance          #+#    #+#             */
-/*   Updated: 2025/05/30 17:32:32 by edurance         ###   ########.fr       */
+/*   Created: 2025/06/06 12:41:27 by edurance          #+#    #+#             */
+/*   Updated: 2025/06/06 12:41:45 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
-void	create_list(t_list **stack_a, int ac, char **av)
+int	ft_lstmin(t_list **stack)
 {
+	int		min;
 	int		i;
-	t_list	*new;
-	t_data	*temp;
+	t_list	*temp_stack;
+	int		res;
 
-	i = 1;
-	while (i <= ac)
+	res = 0;
+	temp_stack = *stack;
+	i = 0;
+	if (temp_stack)
+		min = ((t_data *)temp_stack->content)->rank;
+	while (temp_stack)
 	{
-		temp = malloc(sizeof(t_data));
-		if (!temp)
+		temp_stack = temp_stack->next;
+		if (temp_stack && min > ((t_data *)temp_stack->content)->rank)
 		{
-			ft_lstclear(stack_a, &free);
-			return ;
+			min = ((t_data *)temp_stack->content)->rank;
+			res = i + 1;
 		}
-		temp->value = (int)ft_atoi(av[i]);
-		temp->rank = -1;
-		new = ft_lstnew(temp);
-		ft_lstadd_back(stack_a, new);
 		i++;
 	}
+	return (res);
 }
