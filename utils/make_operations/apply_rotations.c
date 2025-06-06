@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 12:47:47 by edurance          #+#    #+#             */
-/*   Updated: 2025/06/06 13:04:09 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/06 13:21:53 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,6 @@ void	apply_min(t_list **a, t_list **b)
 					smaller)->content)->rank);
 	total_operations(res);
 	apply_ope(res, a, b);
-	ft_pb(a, b);
+	pb(a, b);
 	free(res);
 }

@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 11:46:46 by edurance          #+#    #+#             */
-/*   Updated: 2025/06/06 13:15:14 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/06 13:22:49 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	push_swap(t_list **a, t_list **b)
 	while (*a)
 		apply_min(a, b);
 	max_pos = ft_lstmax(b);
-	if (max_pos > ft_lstsize(b) / 2)
+	if (max_pos > ft_lstsize(*b) / 2)
 	{
 		while (ft_lstmax(b))
 			rrb(b);
@@ -31,8 +31,8 @@ void	push_swap(t_list **a, t_list **b)
 		while (ft_lstmax(b))
 			rb(b);
 	}
-	while (b)
-		pa(&a, &b);
+	while (*b)
+		pa(a, b);
 }
 
 int	main(int ac, char **av)

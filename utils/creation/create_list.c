@@ -6,11 +6,11 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 11:53:39 by edurance          #+#    #+#             */
-/*   Updated: 2025/06/06 13:02:47 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/06 13:18:36 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
 /*creates a list with integers and ranks*/
 void	create_list(t_list **stack_a, int ac, char **av)

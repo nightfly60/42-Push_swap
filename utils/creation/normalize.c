@@ -6,13 +6,13 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:49:26 by edurance          #+#    #+#             */
-/*   Updated: 2025/06/06 13:02:58 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/06 13:20:07 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../push_swap.h"
 
-static int	ft_lstmin(t_list **stack)
+static int	find_min(t_list **stack)
 {
 	int		min;
 	int		min_index;
@@ -50,7 +50,7 @@ void	ft_normalize(t_list **stack)
 	num = 0;
 	while (num < size)
 	{
-		first = ft_lstget(*stack, ft_lstmin(stack));
+		first = ft_lstget(*stack, find_min(stack));
 		((t_data *)first->content)->rank = num;
 		num++;
 	}

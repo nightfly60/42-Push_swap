@@ -6,11 +6,11 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 12:49:09 by edurance          #+#    #+#             */
-/*   Updated: 2025/06/06 13:02:22 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/06 13:18:27 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
 /*check unique*/
 int	check_dupli(int ac, char **av)

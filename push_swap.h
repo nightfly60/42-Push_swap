@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 12:12:54 by edurance          #+#    #+#             */
-/*   Updated: 2025/06/06 13:01:01 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/06 13:21:41 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	ft_lstrev_rotate(t_list **stack);
 /*make operations*/
 void	apply_min(t_list **a, t_list **b);
 int		total_operations(int *tab);
+int		*operations(t_list *a, t_list *b, int x, int rank);
 int		ft_min(int a, int b);
 int		ft_max(int a, int b);
 

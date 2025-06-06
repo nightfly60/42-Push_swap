@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 12:44:25 by edurance          #+#    #+#             */
-/*   Updated: 2025/06/06 13:15:20 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/06 13:21:19 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	b_rotations(t_list **b, int rank)
 }
 
 /*[ra, rra, rb, rrb]*/
-static int	*operations(t_list *a, t_list *b, int x, int rank)
+int	*operations(t_list *a, t_list *b, int x, int rank)
 {
 	int	*res;
 

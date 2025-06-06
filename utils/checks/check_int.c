@@ -6,11 +6,11 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 12:40:28 by edurance          #+#    #+#             */
-/*   Updated: 2025/05/28 16:40:02 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/06 13:18:30 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
 static int	check_digits(char *av)
 {
