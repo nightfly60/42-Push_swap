@@ -6,33 +6,44 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 11:46:46 by edurance          #+#    #+#             */
-/*   Updated: 2025/06/07 16:05:46 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/07 20:32:34 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push_back(t_list **a, t_list **b)
+static void	ret_sorted(t_list **a)
 {
-	int	actual;
-
-	while (*b)
-	{
-		actual = (((t_data *)ft_lstlast(*a)->content)->rank);
-		if (actual == ((((t_data *)(*a)->content)->rank) - 1))
-			rra(a);
-		else
-			pa(a, b);
-	}
 	if (ft_lstmin(a) > ft_lstsize(*a) / 2)
 	{
 		while (ft_lstmin(a))
+		{
 			rra(a);
+		}
 	}
 	else
 	{
 		while (ft_lstmin(a))
+		{
 			ra(a);
+		}
+	}
+}
+
+static void	push_back(t_list **a, t_list **b)
+{
+	int	i;
+
+	i = 0;
+	if (ft_lstsize(*a) == 3)
+		ft_lstlast(*a)->previous = (*a)->next;
+	while (*b)
+	{
+		if (*b && (((t_data *)(ft_lstlast(*a))->content)->rank) >
+			((((t_data *)(*b)->content)->rank)))
+			rra(a);
+		else
+			pa(a, b);
 	}
 }
 
@@ -57,20 +68,7 @@ void	push_swap(t_list **a, t_list **b)
 			rb(b);
 	}
 	push_back(a, b);
-}
-
-static void	ret_sorted(t_list **a)
-{
-	if (ft_lstmin(a) > ft_lstsize(*a) / 2)
-	{
-		while (ft_lstmin(a))
-			rra(a);
-	}
-	else
-	{
-		while (ft_lstmin(a))
-			ra(a);
-	}
+	ret_sorted(a);
 }
 
 static void	sort_args(t_list **a, t_list **b, int args, char **av)

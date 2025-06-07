@@ -8,7 +8,6 @@ FILES = operations/push.c operations/reverse_rotate.c operations/rotate.c operat
 	utils/make_operations/calculate.c utils/make_operations/extremum.c utils/make_operations/sort_three.c push_swap.c \
 	utils/creation/tab_size.c utils/checks/check_args.c
 CC = cc
-AR = ar rcs
 CFLAGS = -Wall -Werror -Wextra
 OBJ = $(patsubst %.c, $(OBJDIR)/%.o, $(FILES))
 

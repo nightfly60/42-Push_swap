@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 14:08:30 by edurance          #+#    #+#             */
-/*   Updated: 2025/06/07 14:44:55 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/07 20:11:21 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	pa(t_list **stack_a, t_list **stack_b)
 	tmp = *stack_b;
 	*stack_b = (*stack_b)->next;
 	tmp->next = NULL;
+	tmp->previous = NULL;
 	ft_lstadd_front(stack_a, tmp);
 	write(1, "pa\n", 3);
 }
