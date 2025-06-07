@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 12:12:54 by edurance          #+#    #+#             */
-/*   Updated: 2025/06/06 18:38:20 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/07 16:07:10 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,12 @@ void	rrr(t_list **stack_a, t_list **stack_b);
 /*checks*/
 int		check_dupli(int ac, char **av);
 int		check_int(char **av);
+void	check_args(char ***av, int *args);
 
 /*creation*/
 void	create_list(t_list **stack_a, int ac, char **av);
 void	ft_normalize(t_list **stack);
+int		tab_size(char **tab);
 
 /*lists*/
 t_list	*ft_lstget(t_list *stack, int place);
@@ -58,6 +60,6 @@ int		total_operations(int *tab);
 int		*operations(t_list *a, t_list *b, int x, int rank);
 int		ft_min(int a, int b);
 int		ft_max(int a, int b);
-void sort_three(t_list **a);
+void	sort_three(t_list **a);
 
 #endif

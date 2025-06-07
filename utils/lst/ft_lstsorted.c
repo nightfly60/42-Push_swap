@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 12:53:37 by edurance          #+#    #+#             */
-/*   Updated: 2025/06/06 12:53:52 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/07 16:11:16 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	ft_lstsorted(t_list *stack, int prem)
 	int		content;
 	int		next_content;
 
+	if (!stack)
+		return (1);
 	first = ((t_data *)stack->content)->value;
 	while (stack->next)
 	{

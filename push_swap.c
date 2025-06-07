@@ -6,13 +6,13 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 11:46:46 by edurance          #+#    #+#             */
-/*   Updated: 2025/06/06 22:48:30 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/07 16:05:46 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void push_back(t_list **a, t_list **b)
+static void	push_back(t_list **a, t_list **b)
 {
 	int	actual;
 
@@ -59,39 +59,54 @@ void	push_swap(t_list **a, t_list **b)
 	push_back(a, b);
 }
 
+static void	ret_sorted(t_list **a)
+{
+	if (ft_lstmin(a) > ft_lstsize(*a) / 2)
+	{
+		while (ft_lstmin(a))
+			rra(a);
+	}
+	else
+	{
+		while (ft_lstmin(a))
+			ra(a);
+	}
+}
+
+static void	sort_args(t_list **a, t_list **b, int args, char **av)
+{
+	create_list(a, args, av);
+	ft_normalize(a);
+	if (ft_lstsorted(*a, 1))
+		ret_sorted(a);
+	else if (ft_lstsize(*a) == 3)
+		sort_three(a);
+	else
+		push_swap(a, b);
+}
+
 int	main(int ac, char **av)
 {
 	t_list	*a;
 	t_list	*b;
-	int		*res;
-	int		max_pos;
+	int		args;
 
-	ac = ac - 1;
+	args = ac - 1;
 	a = NULL;
 	b = NULL;
-	if (!ac)
+	if (!args)
 		return (0);
-	if (!check_int(av) || !check_dupli(ac, av))
-		return (write(2, "Error\n", 6));
-	create_list(&a, ac, av);
-	ft_normalize(&a);
-	if (ft_lstsorted(a, 1))
+	check_args(&av, &args);
+	if (!check_int(av) || !check_dupli(args, av))
 	{
-		if (ft_lstmin(&a) > ft_lstsize(a) / 2)
-		{
-			while (ft_lstmin(&a))
-				rra(&a);
-		}
-		else
-		{
-			while (ft_lstmin(&a))
-				ra(&a);
-		}
+		if (ac == 2)
+			ft_freeall(av);
+		write(2, "Error\n", 6);
+		return (0);
 	}
-	else if (ft_lstsize(a) == 3)
-		sort_three(&a);
-	else
-		push_swap(&a, &b);
+	sort_args(&a, &b, args, av);
 	ft_lstclear(&a, &free);
+	if (ac == 2)
+		ft_freeall(av);
 	return (0);
 }
