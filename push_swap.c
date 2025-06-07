@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 11:46:46 by edurance          #+#    #+#             */
-/*   Updated: 2025/06/07 20:32:34 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/07 20:41:07 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,19 @@ static void	push_back(t_list **a, t_list **b)
 	i = 0;
 	if (ft_lstsize(*a) == 3)
 		ft_lstlast(*a)->previous = (*a)->next;
-	while (*b)
+	while (*b && i < 3)
 	{
 		if (*b && (((t_data *)(ft_lstlast(*a))->content)->rank) >
 			((((t_data *)(*b)->content)->rank)))
+		{
+			i++;
 			rra(a);
+		}
 		else
 			pa(a, b);
 	}
+	while (*b)
+		pa(a, b);
 }
 
 void	push_swap(t_list **a, t_list **b)
