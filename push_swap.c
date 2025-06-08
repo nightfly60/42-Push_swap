@@ -6,7 +6,7 @@
 /*   By: edurance <edurance@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 11:46:46 by edurance          #+#    #+#             */
-/*   Updated: 2025/06/07 20:41:07 by edurance         ###   ########.fr       */
+/*   Updated: 2025/06/08 12:10:16 by edurance         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,17 @@ static void	ret_sorted(t_list **a)
 static void	push_back(t_list **a, t_list **b)
 {
 	int	i;
+	int	size;
 
+	size = ft_lstsize(*a);
 	i = 0;
-	if (ft_lstsize(*a) == 3)
+	if (size == 3)
 		ft_lstlast(*a)->previous = (*a)->next;
-	while (*b && i < 3)
+	while (*b && i < size)
 	{
-		if (*b && (((t_data *)(ft_lstlast(*a))->content)->rank) >
-			((((t_data *)(*b)->content)->rank)))
+		if (*b
+			&& (((t_data *)(ft_lstlast(*a))->content)->rank) >
+				((((t_data *)(*b)->content)->rank)))
 		{
 			i++;
 			rra(a);
@@ -60,7 +63,10 @@ void	push_swap(t_list **a, t_list **b)
 	pb(a, b);
 	while (*a && ft_lstsize(*a) > 3)
 		apply_min(a, b);
-	sort_three(a);
+	if (ft_lstsize(*a) == 3)
+		sort_three(a);
+	else
+		ret_sorted(a);
 	max_pos = ft_lstmax(b);
 	if (max_pos > ft_lstsize(*b) / 2)
 	{
