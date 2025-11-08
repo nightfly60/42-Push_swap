@@ -1,7 +1,7 @@
 # 🧮 Push_swap - 42 Project
 
 > _Because Swap_push doesn’t feel as natural._  
-> _Sort data in a stack using a minimal set of operations — efficiency meets algorithmic elegance._
+> _Sort data in a stack using a minimal set of operations, efficiency meets algorithmic elegance._
 
 ---
 
