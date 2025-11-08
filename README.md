@@ -1,7 +1,7 @@
 # 🧮 Push_swap - 42 Project
 
 ## 🌍 Languages
-[English](#english-version) | [Français](#version-francaise)
+[English](#english-version) | [Français](#version-française)
 
 ---
 
